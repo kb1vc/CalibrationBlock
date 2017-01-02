@@ -1,14 +1,15 @@
 # Description:
 
-This is an OpenSCAD model for a simple SMA nut finger-wrench that
-can be printed in a few minutes on a 3D printer.
+This is an OpenSCAD model for a simple Calibration Block.
 
-The included scad file is optimized for a Monoprice Select Mini 3D
-printer.  For other printers, you may need to modify the "HexWidth"
-dimension in the SMASpinner.scad file.
+The included scad file contains a printable object that has
+5 different hole sizes and 5 different peg sizes printed in
+both horizontal and vertical orientations.  There are two
+sets of holes: round and square.  There are two sets of pegs:
+also round and square.
 
-The default model produces a wrench with a cutout large enough
-to slip over UT-141 semirigid coax.
+The file takes approximately 3 hours to print on a Monoprice Select
+Mini 3D printer. 
 
 # License:
 See the LICENSE.txt file for copyright and conditions for re-use.
