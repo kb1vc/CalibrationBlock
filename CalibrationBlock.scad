@@ -54,6 +54,8 @@ Label_Y = 1.5;
 Step_Y = 0.5; 
 Space_X = 0.1;
 
+Gusset_S = 1.5;
+
 Text_Height = 0.05;
 
 function sumSizes(idx) = ( idx == 0 ? Sizes[idx][0] : Sizes[idx][0] + sumSizes(idx-1) );
@@ -70,8 +72,8 @@ module show_text(string, loc) {
     translate([loc[0], loc[1], loc[2] - Text_Height]) {
         rotate([0,0,90]) {      
             linear_extrude(height=(2 * Text_Height)) {
-                scale([0.015, 0.015, 0.15]) {
-                    text(text = string, halign="center", valign="center");
+                scale([0.015, 0.018, 0.15]) {
+                    text(text = string, halign="center", valign="center", font="DejaVu LGC Sans:style=Bold");
                 }
             }
         }
@@ -129,6 +131,15 @@ module CalibrationSlab(orientation) {
     }
 }
 
+module Gusset(xloc) {
+    translate([xloc, -Base_Z, 0]) {
+        rotate([0, -90, 0])
+        linear_extrude(height = Base_Z) {
+            polygon(points=[ [0, 0], [Gusset_S, 0], [0, Gusset_S], [0, 0] ]);
+        }
+    }
+}
+
 module CalibrationBlock() {
     CalibrationSlab("H"); 
 
@@ -141,4 +152,6 @@ module CalibrationBlock() {
 
 scale([25.4,25.4,25.4]) {
     CalibrationBlock();
+    Gusset(Base_Z);
+    Gusset(Base_X);
 }
