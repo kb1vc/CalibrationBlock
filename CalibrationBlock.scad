@@ -65,7 +65,8 @@ function xOffset(idx) = ( First_X + idx * Space_X + sumSizes(idx) );
 // Parameters
 Base_Z = 0.10; // thickness of base   
 Base_Y = Peg_Y + 1.1;               // width of base
-Base_X = First_X * 2 + xOffset(len(Sizes)-1) + Sizes[len(Sizes)-1][0] * 0.5;  // length of base
+Base_X = First_X * 2 + xOffset(len(Sizes)-1) + 
+         Sizes[len(Sizes)-1][0] * 0.5;  // length of base
   
 
 module show_text(string, loc) {
@@ -73,7 +74,9 @@ module show_text(string, loc) {
         rotate([0,0,90]) {      
             linear_extrude(height=(2 * Text_Height)) {
                 scale([0.015, 0.018, 0.15]) {
-                    text(text = string, halign="center", valign="center", font="DejaVu LGC Sans:style=Bold");
+                    text(text = string, 
+                    halign="center", valign="center", 
+                    font="DejaVu LGC Sans:style=Bold");
                 }
             }
         }
@@ -135,7 +138,9 @@ module Gusset(xloc) {
     translate([xloc, -Base_Z, 0]) {
         rotate([0, -90, 0])
         linear_extrude(height = Base_Z) {
-            polygon(points=[ [0, 0], [Gusset_S, 0], [0, Gusset_S], [0, 0] ]);
+            polygon(points=[ [0, 0], 
+            [Gusset_S, 0], [0, Gusset_S], 
+            [0, 0] ]);
         }
     }
 }
